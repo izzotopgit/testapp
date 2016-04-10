@@ -1,0 +1,27 @@
+﻿@model PwcTestApp.Models.SearchDataViewModel
+
+@{
+    ViewBag.Title = "Info search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3> Search form:</h3>
+        </div>
+        <div class="panel-body">
+            <p class="lead">Please enter company name for searching:</p>
+            @using (@Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-group" }))
+            {
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    @Html.LabelFor(x => x.SearchString)
+                    @Html.TextBoxFor(x => x.SearchString, new { @class = "form-control", placeholder = "Name here" })
+                </div>
+                <input type="submit" class="btn btn-primary" value="Search" />
+            }
+        </div>
+        @Html.ActionLink("View History", "History", new { page = 1 }, new { @class = "pull-right" })
+    </div>
+</div>

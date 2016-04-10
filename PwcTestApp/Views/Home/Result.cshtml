@@ -1,0 +1,41 @@
+﻿@model System.Collections.Generic.Dictionary<string, int>
+
+@{
+    ViewBag.Title = "results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Results</h2>
+
+    @Html.ActionLink("Back to the search screen", "Index")
+
+    @if (@Model.Count > 0)
+    {
+
+        <table class="table table-reflow">
+            <thead>
+                <tr>
+                    <th>Company name</th>
+                    <th>Mentions count</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in @Model)
+                {
+                    <tr>
+                        <td>@item.Key</td>
+                        <td>@item.Value mentions</td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="lead">There is no companies found, try again with another search word.</p>
+    }
+</div>
